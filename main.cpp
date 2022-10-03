@@ -5,6 +5,10 @@
 
 using namespace std;
 
+void listCur(map<string, float>Exchanges) {
+    for(auto &str : Exchanges) cout << str.first << "\n"; 
+}
+
 bool isFloat(string str)  {
     int count{ 0 };
     for (char c : str) {
@@ -44,6 +48,10 @@ int main()
     while (true) {
         cout << "What currency are you trying to exchange from (Type \"list\" for list of currencies): ";
         cin >> inputcur;
+        if(inputcur == "list") {
+            listCur(Exchanges); 
+            continue;
+        }
         for (auto & c: inputcur) c = toupper(c);
         if (Exchanges.find(inputcur) == Exchanges.end()) {
             cout << "Please put a valid currency.\n";
@@ -54,6 +62,10 @@ int main()
     while (true) {
         cout << "What currency are you trying to exchange to (Type \"list\" for list of currencies): ";
         cin >> outputcur;
+        if(outputcur == "list") {
+            listCur(Exchanges); 
+            continue;
+        }
         for (auto & c: outputcur) c = toupper(c);
         if (Exchanges.find(outputcur) == Exchanges.end()) {
             cout << "Please put a valid currency.\n";
